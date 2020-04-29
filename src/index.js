@@ -2,66 +2,67 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+
+/*
+// This was a test code
+const elemental = (
+	<h1 className="greeting">
+	 Hello There
+	</h1>
+)
+
+*/
+class Trial extends React.Component {
+
+	render(){
+		return (
+			<div>
+			  <h1>Hellow There</h1>
+			</div>
+		);
+	}
+}
+
+
 const impedance = 37;
 const sensitivity = 94;
 
+/* Volume sets at constant
 const safe_volume = 85;
 const moderate_volume = 100;
 const fairlyloud_volume = 110;
 const veryloud_volume = 115;
 const painful_volume = 120;
-
-/* Functions for power calculations */
-function powerCalculation(sensitivity) {
-	let power_safe = 10**((safe_volume - sensitivity) / 10);
-	let power_moderate = 10**((moderate_volume - sensitivity) / 10);
-	let power_fairlyloud = 10**((fairlyloud_volume - sensitivity) / 10);
-	let power_veryloud = 10**((veryloud_volume - sensitivity) / 10);
-	let power_painful = 10**((painful_volume - sensitivity) / 10);
-
-	/* Calculations part
-	power_safe = 10**((safe_volume - sensitivity) / 10);
-	power_moderate = 10**((moderate_volume - sensitivity) / 10);
-	power_fairlyloud = 10**((fairlyloud_volume - sensitivity) / 10);
-	power_veryloud = 10**((veryloud_volume - sensitivity) / 10);
-	power_painful = 10**((painful_volume - sensitivity) / 10);
-	*/
-		
-	/*
-	return (
-		power_safe.toPrecision(2)
-	)
-	*/
-	return {
-		power_safe: power_safe(),
-	}
-}
-
-const elemental = (
-	<h3>
-	 Safe volume is at: {powerCalculation(sensitivity)} dB SPL
-	</h3>
-);
-
-
-/* Sample Code tested working
-function formatName(user) {
-	return user.firstName + ' ' + user.lastName;
-}
-
-const user = {
-	firstName: 'Harper',
-	lastName: 'Perez'
-};
-
-const element = (
-	<h1>
-	 Hello, {formatName(user)}!
-	</h1>
-);
 */
 
+var volumes = {
+	safe_volume : 85,
+	moderate_volume : 100,
+	fairlyloud_volume : 110,
+	veryloud_volume : 115,
+	painful_volume : 120
+};
+
+
+// Base power calculator function
+function powerCalculation(sensitivity, volume_level) {
+	return 10**((volume_level - sensitivity) / 10);
+}
+
+
+// Printing out volumes array
+for(var index in volumes) {
+	document.write( index + " : " + volumes[index] + " dB SPL" + "<br />");
+}
+
+// Printing out calculated power calculations from the volumes array
+document.write( "<br />")		// just putting space between
+for(var index in volumes) {
+	document.write( powerCalculation(sensitivity, volumes[index]).toPrecision(3) + " mW" + "<br />" );
+}
+
+
 ReactDOM.render(
-	elemental,
+	<Trial />,
 	document.getElementById('root')
 );
