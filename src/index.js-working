@@ -1,0 +1,110 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+
+// declaring default volume levels in db PL
+const safe_volume = 85;
+const moderate_volume = 100;
+const fairlyloud_volume = 110;
+const veryloud_volume = 115;
+const painful_volume = 120;
+
+/* Functions for power calculations */
+function powerCalculation(sensitivity) {
+	let power_safe;
+	let power_moderate;
+	let power_fairlyloud;
+	let power_veryloud;
+	let power_painful;
+
+	power_safe = 10**((safe_volume - sensitivity) / 10);
+	power_moderate = 10**((moderate_volume - sensitivity) / 10);
+	power_fairlyloud = 10**((fairlyloud_volume - sensitivity) / 10);
+	power_veryloud = 10**((veryloud_volume - sensitivity) / 10);
+	power_painful = 10**((painful_volume - sensitivity) / 10);
+		
+	return (
+	/*	power_safe : power_safe,
+		power_moderate : power_moderate,
+		power_fairlyloud : power_fairlyloud,
+		power_veryloud : power_veryloud,
+		power_painful : power_painful,
+	*/
+	'Power calculation is ' + sensitivity.power_safe
+	);
+}
+
+const sensitivity = 97;
+
+/* Might need to act a react component for the Calculate button */
+
+class HeadphoneSpecs extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			impedance: '',
+			sensitivity: ''
+		};
+
+		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+	}
+	
+	handleChange(event) {
+		// Need for multiple events
+		// const name = target.name;
+		// const value = event.target.value;
+		/*
+		this.setState({
+			[name]: value
+		});
+		*/
+	}
+
+	handleSubmit(event) {
+		// Need for multiple submits
+		event.preventDefault();
+	}
+
+	render() {
+		return (
+			<div id="form">
+			  <form onSubmit={this.handleSubmit}>
+			    <label>
+			      <h3> Headphone Impedance (Ohms): </h3>
+			      <input 
+			        name="impedance"
+			        type="text" 						// need to be able to convert text to number
+			        id="impedance"
+			        value={this.state.value}
+			        onChange={this.handleChange}
+			      />
+			    </label>
+			    <label>
+			      <h3> Headphone Sensitivity (dB SPL / mW): </h3>
+			      <input
+			        name="sensitivity"
+			        type="text"						// need to be able to convert text to number
+			        id="sensitivity"
+			        value={this.state.value}
+			        onChange={this.handleChange}
+			      />
+			    </label>
+			    <button 
+			  	  type="submit"
+			  	  value="Submit"
+			  	  id="calculate"
+			      onClick={this.handleSubmit}
+			    >
+			    Calculate
+			    </button>
+			  </form>
+			</div>
+		);
+	}
+}
+
+ReactDOM.render(
+	<HeadphoneSpecs />,
+	document.getElementById('root')
+);
