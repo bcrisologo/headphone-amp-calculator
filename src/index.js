@@ -101,6 +101,10 @@ class Trial extends React.Component {
 			// Continue with no errors
 			return;
 		}
+
+
+		// Need to include continuing function here
+
 	}
 
 	render(){
@@ -121,8 +125,9 @@ class Trial extends React.Component {
 			  	name="impedance"
 			    className="impedance"
 			    type="text"
-			    //value={impedance}
+			    placeholder="Impedance"
 			    onChange={this.handleChange}
+   			    value={this.state.impedance}
 			  />
 			  {this.state.errormessageone}
 			  <p> Sensitivity (db SPL / mW): </p>
@@ -130,14 +135,18 @@ class Trial extends React.Component {
 			  	name="sensitivity"
 			    className="sensitivity"
 			    type="text"
-			    //value={sensitivity}
+			    placeholder="Sensitivity"
 			    onChange={this.handleChange}
+			    value={this.state.sensitivity}
 			  />
 			  {this.state.errormessagetwo}
 			  <br /> <br />
 			  <button type="submit">Enter</button>
 			  <br /><br />
 			</form>
+			  <div>
+			    <PowerOutput />
+			  </div>
 			</div>
 		);
 	}
@@ -148,7 +157,7 @@ class PowerOutput extends React.Component {
 	render() {
 		return(
 			<div className="powerresults">
-			<h3>PowerOutput results</h3>
+			<h3>This is rendered by PowerOutput class</h3>
 			</div>
 		)
 	}
