@@ -2,16 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-
-/*
-// This was a test code
-const elemental = (
-	<h1 className="greeting">
-	 Hello There
-	</h1>
-)
-
-*/
 class Trial extends React.Component {
 
 	constructor(props) {
@@ -19,6 +9,8 @@ class Trial extends React.Component {
 		this.state = { 
 			sensitivity: '', 
 			impedance: '',
+			errormessageone: '',
+			errormessagetwo: ''
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -29,10 +21,28 @@ class Trial extends React.Component {
 		let name = event.target.name;
 		let value = event.target.value;
 
-		// Checking if values are not numerical
-		// if (!Number(value)) {
-		//	alert("Entry must be numerical");
-		//}
+		let errone = '';
+		let errtwo = '';
+
+		// Displays an error on the side of the input box
+		// when the entry is non-numerical
+		// Displays error for Impedance
+		if(name === "impedance") {
+			if(value != "" && !Number(value)) {
+				errone = "  Impedance must be a number";
+			}
+		}
+		// Displays error for Sensitivity
+		if(name === "sensitivity") {
+			if(value != "" && !Number(value)) {
+				errtwo = "  Sensitivity must be a number";
+			}
+		}	
+
+		this.setState({
+			errormessageone: errone,
+			errormessagetwo: errtwo
+		});
 
 		this.setState({
 			[name]: value
@@ -46,16 +56,26 @@ class Trial extends React.Component {
 		let sensitivity = this.state.sensitivity;
 
 		// Checks if entries submitted are not numerical
-		if(!Number(impedance) && !Number(sensitivity)) {
+		// Returns an alert message
+		if(impedance != '' && sensitivity != '' && 
+			!Number(impedance) && !Number(sensitivity)) {
+			// Both entries are non-numbers
 			alert("Impedance and Sensitivity entries are not numbers");
 		}
-			else if(!Number(impedance)) {
+			else if(impedance != '' && !Number(impedance)) {
+				// Impedance is not a number
 				alert("Impedance entry is not a number");
 			}
-			else if(!Number(sensitivity)) {
+			else if(sensitivity != '' && !Number(sensitivity)) {
+				// Sensitivity is not a number
 				alert("Sensitivity entry is not a number");
 			}
+			else if(impedance === '' && sensitivity === '') {
+				// Empty field
+				return;
+			}
 		else {
+			// Continue with no errors
 			return;
 		}
 	}
@@ -63,7 +83,7 @@ class Trial extends React.Component {
 	render(){
 		return (
 			<form onSubmit={this.handleSubmit}>
-			  <h1> Thanks for coming to the headphone amp page </h1><br />
+			  <h1> Thanks for coming to the headphone amp calculator page </h1><br />
 			  <h3> Headphone Impedance is {this.state.impedance} </h3><br />
 			  <h3> Headphone Sensitivity is {this.state.sensitivity} </h3><br />
 			  <p> Impedance: </p>
@@ -73,6 +93,7 @@ class Trial extends React.Component {
 			    id="impedance"
 			    onChange={this.handleChange}
 			  />
+			  {this.state.errormessageone}
 			  <p> Sensitivity (db SPL / mW): </p>
 			  <input
 			    name="sensitivity"
@@ -80,15 +101,20 @@ class Trial extends React.Component {
 			    id="sensitivity"
 			    onChange={this.handleChange}
 			  />
+			  {this.state.errormessagetwo}
 			  <br /> <br />
-			  <input type="submit" />
+			  <input 
+			    type="submit" 
+			    value="Enter"
+			  />
+			  <br /><br />
 			</form>
 		);
 	}
 }
 
 
-const impedance = 37;
+// const impedance = 37;
 const sensitivity = 94;
 
 /* Volume sets at constant
@@ -115,16 +141,15 @@ function powerCalculation(sensitivity, volume_level) {
 
 
 // Printing out volumes array
-for(var index in volumes) {
-	//document.write( index + " : " + volumes[index] + " dB SPL" + "<br />");
-	document.write(index + " : " + volumes[index] + " dB SPL" + "<br />");
-}
+// for(var index in volumes) {
+//	document.write(index + " : " + volumes[index] + " dB SPL" + "<br />");
+//}
 
 // Printing out calculated power calculations from the volumes array
-document.write( "<br />")		// just putting space between
-for(var index in volumes) {
-	document.write( powerCalculation(sensitivity, volumes[index]).toPrecision(3) + " mW" + "<br />" );
-}
+// document.write( "<br />")		// just putting space between
+// for(var index in volumes) {
+//	document.write( powerCalculation(sensitivity, volumes[index]).toPrecision(3) + " mW" + "<br />" );
+//}
 
 
 ReactDOM.render(
