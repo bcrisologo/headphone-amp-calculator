@@ -2,6 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+
+var volumes = {
+	safe_volume : 85,
+	moderate_volume : 100,
+	fairlyloud_volume : 110,
+	veryloud_volume : 115,
+	painful_volume : 120
+};
+
+// Test inputs
+// const impedance = 37;
+// const sensitivity = 94;
+
+// Base power calculator function
+function powerCalculation(sensitivity, volume_level) {
+	return 10**((volume_level - sensitivity) / 10);
+}
+
+
 class Trial extends React.Component {
 
 	constructor(props) {
@@ -15,6 +34,10 @@ class Trial extends React.Component {
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+	}
+
+	powerCalculation(sensitivity, volume_level) {
+		return 10**((volume_level - sensitivity) / 10);
 	}
 
 	handleChange(event) {
@@ -81,41 +104,55 @@ class Trial extends React.Component {
 	}
 
 	render(){
+
+		//const {
+		//	impedance,
+		//	sensitivity
+		//} = this.state;
+
 		return (
+			<div className="initialpage">
 			<form onSubmit={this.handleSubmit}>
 			  <h1> Thanks for coming to the headphone amp calculator page </h1><br />
 			  <h3> Headphone Impedance is {this.state.impedance} </h3><br />
 			  <h3> Headphone Sensitivity is {this.state.sensitivity} </h3><br />
 			  <p> Impedance: </p>
 			  <input
-			    name="impedance"
+			  	name="impedance"
+			    className="impedance"
 			    type="text"
-			    id="impedance"
+			    //value={impedance}
 			    onChange={this.handleChange}
 			  />
 			  {this.state.errormessageone}
 			  <p> Sensitivity (db SPL / mW): </p>
 			  <input
-			    name="sensitivity"
+			  	name="sensitivity"
+			    className="sensitivity"
 			    type="text"
-			    id="sensitivity"
+			    //value={sensitivity}
 			    onChange={this.handleChange}
 			  />
 			  {this.state.errormessagetwo}
 			  <br /> <br />
-			  <input 
-			    type="submit" 
-			    value="Enter"
-			  />
+			  <button type="submit">Enter</button>
 			  <br /><br />
 			</form>
+			</div>
 		);
 	}
 }
 
+class PowerOutput extends React.Component {
 
-// const impedance = 37;
-const sensitivity = 94;
+	render() {
+		return(
+			<div className="powerresults">
+			<h3>PowerOutput results</h3>
+			</div>
+		)
+	}
+}
 
 /* Volume sets at constant
 const safe_volume = 85;
@@ -124,21 +161,6 @@ const fairlyloud_volume = 110;
 const veryloud_volume = 115;
 const painful_volume = 120;
 */
-
-var volumes = {
-	safe_volume : 85,
-	moderate_volume : 100,
-	fairlyloud_volume : 110,
-	veryloud_volume : 115,
-	painful_volume : 120
-};
-
-
-// Base power calculator function
-function powerCalculation(sensitivity, volume_level) {
-	return 10**((volume_level - sensitivity) / 10);
-}
-
 
 // Printing out volumes array
 // for(var index in volumes) {
