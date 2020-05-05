@@ -24,8 +24,8 @@ class Trial extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { 
-			sensitivity: null, 
-			impedance: null,
+			sensitivity: '', 
+			impedance: '',
 			errormessageone: '',
 			errormessagetwo: '',
 		};
@@ -71,6 +71,7 @@ class Trial extends React.Component {
 	handleSubmit(event) {
 		event.preventDefault();
 
+		// Assigning the local variables to input
 		let impedance = this.state.impedance;
 		let sensitivity = this.state.sensitivity;
 
