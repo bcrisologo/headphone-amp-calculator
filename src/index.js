@@ -15,7 +15,7 @@ const { safe_volume, moderate_volume, fairlyloud_volume, veryloud_volume, painfu
 
 // Base power calculator function
 function powerCalculation(sensitivity, volume_level) {
-	return 10**((volume_level - sensitivity) / 10)
+	return 10 ** ((volume_level - sensitivity) / 10)
 }
 
 
@@ -26,6 +26,7 @@ class Trial extends React.Component {
 		this.state = { 
 			sensitivity: '', 
 			impedance: '',
+			powerresults: '',
 			errormessageone: '',
 			errormessagetwo: '',
 		};
@@ -39,11 +40,16 @@ class Trial extends React.Component {
 	// }
 
 	handleChange(event) {
-		let name = event.target.name;
-		let value = event.target.value;
+		//let name = event.target.name;
+		//let value = event.target.value;
 
-		let errone = '';
-		let errtwo = '';
+		// Logging purposes
+		console.log(event)
+		console.log(event.target.name)
+		console.log(event.target.value)
+
+		let {value, name} = event.target;
+		let {errone, errtwo} = '';
 
 		// Displays an error on the side of the input box
 		// when the entry is non-numerical
@@ -71,6 +77,10 @@ class Trial extends React.Component {
 	handleSubmit(event) {
 		event.preventDefault();
 
+		// Logging purposes
+		const data = this.state;
+		console.log(data)
+
 		// Assigning the local variables to input
 		let impedance = this.state.impedance;
 		let sensitivity = this.state.sensitivity;
@@ -95,16 +105,19 @@ class Trial extends React.Component {
 				// Empty field
 				return;
 			}
-		
-		// Need to include continuing function here
-		// alert(powerCalculation(this.state.sensitivity, volumes.safe_volume).toPrecision(2) + ' mW');
+	
 		this.setState(state => ({
 			impedance: this.state.impedance,
-			sensitivity: this.state.sensitivity
+			sensitivity: this.state.sensitivity,
+			powerresults: 
+			'The result is ' + powerCalculation(sensitivity, volumes.safe_volume).toPrecision(2) + ' mW'
 		}));
 	}
 
 	render(){
+
+		const powerresults = '';
+
 		return (
 			<div className="initialpage">
 			<form onSubmit={this.handleSubmit}>
@@ -135,18 +148,14 @@ class Trial extends React.Component {
 			  <button 
 			    type="submit"
 			    className="submit"
-			    >Enter
+			    >Calculate
 			  </button>
 			  <br /><br />
 			</form>
 			  <div>
-			    <PowerOutput 
-			      sensitivity={this.state.sensitivity} 
-			      impedance={this.state.impedance}
+			    <PowerOutput
+			      powerresults={this.state.powerresults}
 			      />
-			  </div>
-			  <div>
-			    <Results />
 			  </div>
 			</div>
 		);
@@ -158,22 +167,18 @@ class PowerOutput extends React.Component {
 	render() {
 		return(
 			<div className="powerresults">
-			<h3>This is rendered by PowerOutput class</h3>
-			<p>The impedance is {this.props.impedance}</p>
-			<br />
-			<p>The sensitivity is {this.props.sensitivity}</p>
+			<p>{this.props.powerresults}</p>
+			<table>
+			  <thead>
+				<tr>
+			  		<th>Category</th>
+			  		<th>Loudness (db SPL)</th>
+			  		<th>Voltage Needed (VRMS)</th>
+				</tr>
+				</thead>
+			</table>
 			</div>
 		)
-	}
-}
-
-class Results extends React.Component {
-	render() {
-		return (
-			<div>
-			
-			</div>
-		);
 	}
 }
 
