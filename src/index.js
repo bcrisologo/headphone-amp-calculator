@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Tableresults from './Tableresults.js'
 
 
 // Array for target volumes in dB SPL
@@ -19,7 +20,7 @@ function powerCalculation(sensitivity, volume_level) {
 }
 
 
-class Trial extends React.Component {
+class InputForm extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -116,7 +117,7 @@ class Trial extends React.Component {
 
 	render(){
 
-		const powerresults = '';
+		//const powerresults = '';
 
 		return (
 			<div className="initialpage">
@@ -153,22 +154,26 @@ class Trial extends React.Component {
 			  <br /><br />
 			</form>
 			  <div>
-			    <PowerOutput
-			      powerresults={this.state.powerresults}
-			      />
+			    <Tableresults powerresults={this.state.powerresults} />
 			  </div>
 			</div>
 		);
 	}
 }
 
+/*
+			    <PowerOutput
+			      powerresults={this.state.powerresults}
+			      />
+*/
+/*
 class PowerOutput extends React.Component {
 
 	render() {
 		return(
-			<div className="powerresults">
+			<div className="power-results">
 			<p>{this.props.powerresults}</p>
-			<table>
+			<table className="table-results">
 			  <thead>
 				<tr>
 			  		<th>Category</th>
@@ -178,12 +183,12 @@ class PowerOutput extends React.Component {
 				</thead>
 			</table>
 			</div>
-		)
+		);
 	}
 }
-
+*/
 ReactDOM.render(
-	<Trial />,
+	<InputForm />,
 	document.getElementById('root')
 );
 
