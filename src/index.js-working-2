@@ -141,7 +141,9 @@ class InputForm extends React.Component {
 		return (
 			<div className="initialpage">
 			<form onSubmit={this.handleSubmit}>
-			  <h1>Thanks for coming to the headphone amp calculator page!</h1><br />
+			  <h1> Thanks for coming to the headphone amp calculator page </h1><br />
+			  <h3> Headphone Impedance is {this.state.impedance} </h3><br />
+			  <h3> Headphone Sensitivity is {this.state.sensitivity} </h3><br />
 			  <p> Impedance (Ohms): </p>
 			  <input
 			  	name="impedance"
