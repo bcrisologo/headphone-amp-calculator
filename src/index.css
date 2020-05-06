@@ -1,4 +1,4 @@
-body {
+/*body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -6,8 +6,73 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+*/
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.initialpage h1 {
+	position: relative;
+	text-align: center;
+	width: 60%;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+.initialpage p {
+	position: relative;
+	font-size: 18px;
+	text-align: center;
+	width: 40%;
+	margin-left: 30%;
+	margin-right: 30%;
+}
+ 
+.textbox {
+	position: relative;
+	text-align: center;
+	width: 40%;
+	margin-left: 30%;
+	margin-right: 30%;
+}
+
+#submit {
+	position: relative;
+	text-align: center;
+	margin-left: 35%;
+	margin-right: 35%;
+	margin: 0 auto;
+	display: block;
+}
+
+/* This is for the whole Tableresults */
+.tableresults {
+	position: relative;
+	align-content: center;
+	width: 50%;
+	margin-left: 25%;
+	margin-right: 25%;
+}
+
+/* Makes the border of the table merge better */
+.tableouter {
+	position: relative;
+	border-collapse: collapse;
+	font-size: 15px;
+}
+
+/* For the table headers */
+.tablouter tr, th {
+	border: solid;
+	padding: 10px;
+}
+
+/* For the table body */
+.tableouter tr, td {
+	border: 1px solid;
+	padding: 10px;
+	text-overflow: auto;
+	text-align: center;
 }

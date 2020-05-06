@@ -112,29 +112,31 @@ class InputForm extends React.Component {
 			<form onSubmit={this.handleSubmit}>
 			  <h1>Thanks for coming to the headphone amp calculator page!</h1><br />
 			  <p> Impedance (Ohms): </p>
-			  <input
-			  	name="impedance"
-			    className="impedance"
-			    type="text"
-			    placeholder="Impedance"
-			    onChange={this.handleChange}
-   			    value={this.state.impedance}
-			  />
-			  {this.state.errormessageone}
+			  <div class="textbox">
+				  <input
+				  	name="impedance"
+				    type="text"
+				    placeholder="Impedance"
+				    onChange={this.handleChange}
+	   			    value={this.state.impedance}
+				  />
+				  {this.state.errormessageone}
+			  </div>
 			  <p> Sensitivity (db SPL / mW): </p>
-			  <input
-			  	name="sensitivity"
-			    className="sensitivity"
-			    type="text"
-			    placeholder="Sensitivity"
-			    onChange={this.handleChange}
-			    value={this.state.sensitivity}
-			  />
-			  {this.state.errormessagetwo}
+			  <div class="textbox">
+				  <input
+				  	name="sensitivity"
+				    type="text"
+				    placeholder="Sensitivity"
+				    onChange={this.handleChange}
+				    value={this.state.sensitivity}
+				  />
+				  {this.state.errormessagetwo}
+			  </div>
 			  <br /> <br />
 			  <button 
 			    type="submit"
-			    className="submit"
+			    id="submit"
 			    >Calculate
 			  </button>
 			  <br /><br />
@@ -168,14 +170,3 @@ ReactDOM.render(
 	<InputForm />,
 	document.getElementById('root')
 );
-
-// Printing out volumes array
-// for(var index in volumes) {
-//	document.write(index + " : " + volumes[index] + " dB SPL" + "<br />");
-//}
-
-// Printing out calculated power calculations from the volumes array
-// document.write( "<br />")		// just putting space between
-// for(var index in volumes) {
-//	document.write( powerCalculation(sensitivity, volumes[index]).toPrecision(3) + " mW" + "<br />" );
-//}
