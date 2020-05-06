@@ -1,4 +1,15 @@
-import React from 'react';
+// Calculation Functions and Constants used
+export const volumes = {
+	safe_volume: 85,
+	moderate_volume: 100,
+	fairlyloud_volume: 110,
+	veryloud_volume: 115,
+	painful_volume: 120
+};
+const { safe_volume, moderate_volume, 
+		fairlyloud_volume, veryloud_volume, 
+		painful_volume } 
+		= volumes;
 
 // Base calculation for Power Requirements in milliWatts (mW)
 export function powerCalculation(sensitivity, volume_level) {

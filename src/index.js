@@ -1,22 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {powerCalculation, voltageCalculation, currentCalculation} from './Calculations.js';
+import {volumes, powerCalculation, 
+	voltageCalculation, currentCalculation} from './Calculations.js';
 import Tableresults from './Tableresults.js';
 import './index.css';
-
-
-// Array for target volumes in dB SPL
-const volumes = {
-	safe_volume: 85,
-	moderate_volume: 100,
-	fairlyloud_volume: 110,
-	veryloud_volume: 115,
-	painful_volume: 120
-};
-const { safe_volume, moderate_volume, 
-		fairlyloud_volume, veryloud_volume, 
-		painful_volume } 
-		= volumes;
 
 
 class InputForm extends React.Component {
