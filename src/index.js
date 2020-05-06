@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {powerCalculation, voltageCalculation, currentCalculation} from './Calculations.js';
+import Tableresults from './Tableresults.js';
 import './index.css';
-import Tableresults from './Tableresults.js'
 
 
 // Array for target volumes in dB SPL
@@ -16,22 +17,6 @@ const { safe_volume, moderate_volume,
 		fairlyloud_volume, veryloud_volume, 
 		painful_volume } 
 		= volumes;
-
-// Base power calculator function
-function powerCalculation(sensitivity, volume_level) {
-	console.log(sensitivity, volume_level);
-	return 10 ** ((volume_level - sensitivity) / 10)
-}
-
-// Base voltage calculator
-function voltageCalculation(power, impedance) {
-	return Math.sqrt(power / 1000 * impedance)
-}
-
-// Base current calculator
-function currentCalculation(power, impedance) {
-	return Math.sqrt(power / (1000 * impedance)) * 1000
-}
 
 
 class InputForm extends React.Component {
@@ -50,9 +35,6 @@ class InputForm extends React.Component {
 	}
 
 	handleChange(event) {
-		//let name = event.target.name;
-		//let value = event.target.value;
-
 		// Logging purposes
 		console.log(event)
 		console.log(event.target.name)
@@ -96,7 +78,7 @@ class InputForm extends React.Component {
 		let sensitivity = this.state.sensitivity;
 
 		// Checks if entries submitted are not numerical
-		// Returns an alert message
+		// Returns an alert message if it fails in any test
 		// Can use ? operator later for optimization
 		if(impedance !== '' && sensitivity !== '' && 
 			!Number(impedance) && !Number(sensitivity)) {
@@ -129,7 +111,7 @@ class InputForm extends React.Component {
 			voltage_fairlyloud: voltageCalculation(powerCalculation(sensitivity,volumes.fairlyloud_volume), impedance).toPrecision(4),
 			voltage_veryloud: voltageCalculation(powerCalculation(sensitivity,volumes.veryloud_volume), impedance).toPrecision(4),
 			voltage_painful: voltageCalculation(powerCalculation(sensitivity,volumes.painful_volume), impedance).toPrecision(4),
-			current_safe: currentCalculation(powerCalculation(sensitivity,volumes.safe_volume), impedance).toPrecision(3),
+			current_safe: currentCalculation(powerCalculation(sensitivity,volumes.safe_volume), impedance).toPrecision(2),
 			current_moderate: currentCalculation(powerCalculation(sensitivity,volumes.moderate_volume), impedance).toPrecision(4),
 			current_fairlyloud: currentCalculation(powerCalculation(sensitivity,volumes.fairlyloud_volume), impedance).toPrecision(4),
 			current_veryloud: currentCalculation(powerCalculation(sensitivity,volumes.veryloud_volume), impedance).toPrecision(4),
