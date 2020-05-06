@@ -15,14 +15,15 @@ class InputForm extends React.Component {
 			impedance: '',
 			errormessageone: '',
 			errormessagetwo: '',
+			isSubmitted: false
 		};
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		this.poweroutput = this.poweroutput.bind(this);
+		// this.poweroutput = this.poweroutput.bind(this);
 	}
 
-	handleChange(event) {
+	 handleChange(event) {
 		// Logging purposes
 		console.log(event)
 		console.log(event.target.name)
@@ -53,6 +54,7 @@ class InputForm extends React.Component {
 			errormessagetwo: errtwo
 		});
 	}
+	
 
 	handleSubmit(event) {
 		event.preventDefault();
@@ -87,7 +89,7 @@ class InputForm extends React.Component {
 			}
 
 		// Power variables
-		//let power_safe = powerCalculation(sensitivity, volumes.safe_volume).toPrecision(2);
+		let power_safe = powerCalculation(sensitivity, volumes.safe_volume).toPrecision(2);
 		let power_moderate = powerCalculation(sensitivity, volumes.moderate_volume).toPrecision(3);
 		let power_fairlyloud = powerCalculation(sensitivity, volumes.fairlyloud_volume).toPrecision(4);
 		let power_veryloud = powerCalculation(sensitivity, volumes.veryloud_volume).toPrecision(5);
@@ -108,9 +110,10 @@ class InputForm extends React.Component {
 		let current_painful = currentCalculation(powerCalculation(sensitivity,volumes.painful_volume), impedance).toPrecision(4);
 	
 		this.setState(state => ({
+			isSubmitted: true,
 			impedance: impedance,
 			sensitivity: sensitivity,
-			//power_safe: power_safe,
+			power_safe: power_safe,
 			power_moderate: power_moderate,
 			power_fairlyloud: power_fairlyloud,
 			power_veryloud: power_veryloud,
@@ -128,25 +131,26 @@ class InputForm extends React.Component {
 		}));
 	}
 
+
+	/* // The poweroutput function call is still under testing
 	poweroutput(sensitivity, volumes) {
 		//event.preventDefault();
 
-		console.log(power_safe);
-
 		//let sensitivity = this.state.sensitivity;
 		//let impedance = this.state.impedance;
-		const power_safe = this.state.power_safe;
-		power_safe = powerCalculation(sensitivity, volumes.safe_volume).toPrecision(2);
+		const power_safe = powerCalculation(sensitivity, volumes.safe_volume).toPrecision(2);
+		console.log(power_safe);
 
 		this.setState({
 			power_safe: power_safe
 		});
 	}
+	*/
 
 	render(){
 		return (
 			<div className="initialpage">
-			<form onSubmit={this.handleSubmit} poweroutput={this.powerOutput}>
+			<form onSubmit={this.handleSubmit}>
 			  <h1>Thanks for coming to the headphone amp calculator page!</h1><br />
 			  <p> Impedance (Ohms): </p>
 			  <div class="textbox">
@@ -179,7 +183,7 @@ class InputForm extends React.Component {
 			  <br /><br />
 			</form>
 			  <div>
-			  	<h3>Hello this is {this.state.power_safe}</h3>
+			  {this.state.isSubmitted &&
 			    <Tableresults 
 			    power_safe={this.state.power_safe} 
 			    power_moderate={this.state.power_moderate}
@@ -197,6 +201,7 @@ class InputForm extends React.Component {
 			    current_veryloud={this.state.current_veryloud}
 			    current_painful={this.state.current_painful}
 			    />
+			  }
 			  </div>
 			</div>
 		);
