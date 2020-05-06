@@ -84,32 +84,66 @@ class InputForm extends React.Component {
 				// Empty field
 				return;
 			}
+
+		// Power variables
+		//let power_safe = powerCalculation(sensitivity, volumes.safe_volume).toPrecision(2);
+		let power_moderate = powerCalculation(sensitivity, volumes.moderate_volume).toPrecision(3);
+		let power_fairlyloud = powerCalculation(sensitivity, volumes.fairlyloud_volume).toPrecision(4);
+		let power_veryloud = powerCalculation(sensitivity, volumes.veryloud_volume).toPrecision(5);
+		let power_painful = powerCalculation(sensitivity, volumes.painful_volume).toPrecision(5);
+
+		// Voltage variables
+		let voltage_safe = voltageCalculation(powerCalculation(sensitivity,volumes.safe_volume), impedance).toPrecision(2);
+		let voltage_moderate = voltageCalculation(powerCalculation(sensitivity,volumes.moderate_volume), impedance).toPrecision(3);
+		let voltage_fairlyloud = voltageCalculation(powerCalculation(sensitivity,volumes.fairlyloud_volume), impedance).toPrecision(4);
+		let voltage_veryloud = voltageCalculation(powerCalculation(sensitivity,volumes.veryloud_volume), impedance).toPrecision(4);
+		let voltage_painful = voltageCalculation(powerCalculation(sensitivity,volumes.painful_volume), impedance).toPrecision(4);
+
+		// Current variables
+		let current_safe = currentCalculation(powerCalculation(sensitivity,volumes.safe_volume), impedance).toPrecision(2);
+		let current_moderate = currentCalculation(powerCalculation(sensitivity,volumes.moderate_volume), impedance).toPrecision(4);
+		let current_fairlyloud = currentCalculation(powerCalculation(sensitivity,volumes.fairlyloud_volume), impedance).toPrecision(4);
+		let current_veryloud = currentCalculation(powerCalculation(sensitivity,volumes.veryloud_volume), impedance).toPrecision(4);
+		let current_painful = currentCalculation(powerCalculation(sensitivity,volumes.painful_volume), impedance).toPrecision(4);
 	
 		this.setState(state => ({
-			impedance: this.state.impedance,
-			sensitivity: this.state.sensitivity,
-			power_safe: powerCalculation(sensitivity, volumes.safe_volume).toPrecision(2),
-			power_moderate: powerCalculation(sensitivity, volumes.moderate_volume).toPrecision(3),
-			power_fairlyloud: powerCalculation(sensitivity, volumes.fairlyloud_volume).toPrecision(4),
-			power_veryloud: powerCalculation(sensitivity, volumes.veryloud_volume).toPrecision(5),
-			power_painful: powerCalculation(sensitivity, volumes.painful_volume).toPrecision(5),
-			voltage_safe: voltageCalculation(powerCalculation(sensitivity,volumes.safe_volume), impedance).toPrecision(2),
-			voltage_moderate: voltageCalculation(powerCalculation(sensitivity,volumes.moderate_volume), impedance).toPrecision(3),
-			voltage_fairlyloud: voltageCalculation(powerCalculation(sensitivity,volumes.fairlyloud_volume), impedance).toPrecision(4),
-			voltage_veryloud: voltageCalculation(powerCalculation(sensitivity,volumes.veryloud_volume), impedance).toPrecision(4),
-			voltage_painful: voltageCalculation(powerCalculation(sensitivity,volumes.painful_volume), impedance).toPrecision(4),
-			current_safe: currentCalculation(powerCalculation(sensitivity,volumes.safe_volume), impedance).toPrecision(2),
-			current_moderate: currentCalculation(powerCalculation(sensitivity,volumes.moderate_volume), impedance).toPrecision(4),
-			current_fairlyloud: currentCalculation(powerCalculation(sensitivity,volumes.fairlyloud_volume), impedance).toPrecision(4),
-			current_veryloud: currentCalculation(powerCalculation(sensitivity,volumes.veryloud_volume), impedance).toPrecision(4),
-			current_painful: currentCalculation(powerCalculation(sensitivity,volumes.painful_volume), impedance).toPrecision(4),
+			impedance: impedance,
+			sensitivity: sensitivity,
+			//power_safe: power_safe,
+			power_moderate: power_moderate,
+			power_fairlyloud: power_fairlyloud,
+			power_veryloud: power_veryloud,
+			power_painful: power_painful,
+			voltage_safe: voltage_safe,
+			voltage_moderate: voltage_moderate,
+			voltage_fairlyloud: voltage_fairlyloud,
+			voltage_veryloud: voltage_veryloud,
+			voltage_painful: voltage_painful,
+			current_safe: current_safe,
+			current_moderate: current_moderate,
+			current_fairlyloud: current_fairlyloud,
+			current_veryloud: current_veryloud,
+			current_painful: current_painful,
+		}));
+	}
+
+	powerOutput(sensitivity, volumes) {
+		//event.preventDefault();
+
+		//let sensitivity = this.state.sensitivity;
+		//let impedance = this.state.impedance;
+
+		let power_safe = powerCalculation(sensitivity, volumes.safe_volume).toPrecision(2);
+
+		this.setState(state => ({
+			power_safe: this.state.power_safe
 		}));
 	}
 
 	render(){
 		return (
 			<div className="initialpage">
-			<form onSubmit={this.handleSubmit}>
+			<form onSubmit={this.handleSubmit} powerOutput={this.powerOutput}>
 			  <h1>Thanks for coming to the headphone amp calculator page!</h1><br />
 			  <p> Impedance (Ohms): </p>
 			  <div class="textbox">
@@ -142,6 +176,7 @@ class InputForm extends React.Component {
 			  <br /><br />
 			</form>
 			  <div>
+			  	<h3>Hello this is {this.state.power_safe}</h3>
 			    <Tableresults 
 			    power_safe={this.state.power_safe} 
 			    power_moderate={this.state.power_moderate}

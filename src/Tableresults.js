@@ -5,7 +5,7 @@ class Tableresults extends React.Component {
 	render() {
 		return(
 			<div className="tableresults">
-			<h3>This is the Tableresults class</h3>
+			<h3>Power Requirements per Loudness in dB SPL</h3>
 			  <table className="tableouter">
 			    <thead>
 				  <tr>
