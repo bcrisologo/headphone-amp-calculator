@@ -19,6 +19,7 @@ class InputForm extends React.Component {
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.poweroutput = this.poweroutput.bind(this);
 	}
 
 	handleChange(event) {
@@ -127,23 +128,25 @@ class InputForm extends React.Component {
 		}));
 	}
 
-	powerOutput(sensitivity, volumes) {
+	poweroutput(sensitivity, volumes) {
 		//event.preventDefault();
+
+		console.log(power_safe);
 
 		//let sensitivity = this.state.sensitivity;
 		//let impedance = this.state.impedance;
+		const power_safe = this.state.power_safe;
+		power_safe = powerCalculation(sensitivity, volumes.safe_volume).toPrecision(2);
 
-		let power_safe = powerCalculation(sensitivity, volumes.safe_volume).toPrecision(2);
-
-		this.setState(state => ({
-			power_safe: this.state.power_safe
-		}));
+		this.setState({
+			power_safe: power_safe
+		});
 	}
 
 	render(){
 		return (
 			<div className="initialpage">
-			<form onSubmit={this.handleSubmit} powerOutput={this.powerOutput}>
+			<form onSubmit={this.handleSubmit} poweroutput={this.powerOutput}>
 			  <h1>Thanks for coming to the headphone amp calculator page!</h1><br />
 			  <p> Impedance (Ohms): </p>
 			  <div class="textbox">
