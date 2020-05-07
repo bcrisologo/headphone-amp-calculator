@@ -30,12 +30,31 @@ code {
 	margin-right: 30%;
 }
  
-.textbox {
+.textbox-1 {
 	position: relative;
 	text-align: center;
 	width: 40%;
 	margin-left: 30%;
 	margin-right: 30%;
+}
+
+.textbox-2 {
+	position: relative;
+	text-align: center;
+	width: 40%;
+	margin-left: 30%;
+	margin-right: 30%;
+}
+
+/* Placeholder of textboxes */
+input {
+	padding: 5px;
+	text-align: center;
+}
+
+input[type=text]:focus {
+	border-color: lightblue;
+	background-color: lightgrey;
 }
 
 #submit {
@@ -45,6 +64,13 @@ code {
 	margin-right: 35%;
 	margin: 0 auto;
 	display: block;
+	font-size: 16px;
+	border-radius: 10px;
+	padding: 10px;
+}
+
+#submit:hover {
+	background-color: lightgrey;
 }
 
 /* This is for the whole Tableresults */

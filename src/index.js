@@ -151,28 +151,33 @@ class InputForm extends React.Component {
 		return (
 			<div className="initialpage">
 			<form onSubmit={this.handleSubmit}>
-			  <h1>Thanks for coming to the headphone amp calculator page!</h1><br />
-			  <p> Impedance (Ohms): </p>
-			  <div class="textbox">
+			  <h1>Headphone Amplification Calculator</h1><br />
+			  <p> Welcome to the headphone amp calculator page!</p>
+			  <br />
+			  <div className="dataentry">
+  			    <p> Place the specs below to know how much power your headphones need </p>
+			    <div class="textbox-1">
+			    <p> Impedance (Ohms) </p>
 				  <input
-				  	name="impedance"
+				    name="impedance"
 				    type="text"
 				    placeholder="Impedance"
 				    onChange={this.handleChange}
 	   			    value={this.state.impedance}
 				  />
 				  {this.state.errormessageone}
-			  </div>
-			  <p> Sensitivity (db SPL / mW): </p>
-			  <div class="textbox">
-				  <input
-				  	name="sensitivity"
+			    </div>
+			    <div class="textbox-2">
+			    <p> Sensitivity (db SPL / mW) </p>
+    			  <input
+				    name="sensitivity"
 				    type="text"
 				    placeholder="Sensitivity"
 				    onChange={this.handleChange}
 				    value={this.state.sensitivity}
-				  />
-				  {this.state.errormessagetwo}
+				   />
+   				   {this.state.errormessagetwo}
+			    </div>
 			  </div>
 			  <br /> <br />
 			  <button 
