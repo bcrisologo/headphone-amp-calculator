@@ -152,7 +152,7 @@ class InputForm extends React.Component {
 			<div className="initialpage">
 			<form onSubmit={this.handleSubmit}>
 			  <h1>Headphone Amplification Calculator</h1><br />
-			  <p> Welcome to the headphone amp calculator page!</p>
+			  <p> Welcome to the Amplification Calculator page!</p>
 			  <br />
 			  <p> Check the headphone specifications and see the results </p>
 			  <div className="dataentry">
