@@ -154,25 +154,27 @@ class InputForm extends React.Component {
 			  <h1>Headphone Amplification Calculator</h1><br />
 			  <p> Welcome to the headphone amp calculator page!</p>
 			  <br />
+			  <p> Check the headphone specifications and see the results </p>
 			  <div className="dataentry">
-  			    <p> Place the specs below to know how much power your headphones need </p>
 			    <div class="textbox-1">
-			    <p> Impedance (Ohms) </p>
+			    <p> Impedance </p>
 				  <input
 				    name="impedance"
 				    type="text"
-				    placeholder="Impedance"
+				    id="first"
+				    placeholder="Ohms"
 				    onChange={this.handleChange}
 	   			    value={this.state.impedance}
 				  />
 				  {this.state.errormessageone}
 			    </div>
 			    <div class="textbox-2">
-			    <p> Sensitivity (db SPL / mW) </p>
+			    <p> Sensitivity </p>
     			  <input
 				    name="sensitivity"
 				    type="text"
-				    placeholder="Sensitivity"
+				    id="second"
+				    placeholder="dB / mW"
 				    onChange={this.handleChange}
 				    value={this.state.sensitivity}
 				   />
@@ -180,11 +182,11 @@ class InputForm extends React.Component {
 			    </div>
 			  </div>
 			  <br /> <br />
-			  <button 
-			    type="submit"
-			    id="submit"
-			    >Calculate
-			  </button>
+			    <button 
+			      type="submit"
+			      id="submit"
+			      >Calculate
+			    </button>
 			  <br /><br />
 			</form>
 			  <div>
