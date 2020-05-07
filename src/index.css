@@ -15,7 +15,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', 
     monospace;
 }
 
@@ -25,10 +25,13 @@ code {
 	width: 60%;
 	margin-left: 20%;
 	margin-right: 20%;
+	font-family: 'adobe';
+	font-size: 40px;
 }
 
 .initialpage p {
 	position: relative;
+	font-family: 'arial';
 	font-size: 18px;
 	text-align: center;
 	width: 40%;
@@ -40,9 +43,6 @@ code {
 	display: block;
 	position: relative;
 	text-align: center;
-	margin-left: 30%;
-	margin-right: 30%;
-	width: 40%;
     overflow: hidden;
 }
  
