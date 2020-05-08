@@ -21,15 +21,23 @@ code {
 
 @keyframes headamp {
 	0% {
-		transform: translateY(-50%);
+		opacity: 0%;
+		transform: translateY(-10%);
 	}
 	100% {
+		opacity: 100%;
 		transform: translateY(0%);
 	}
 }
 
+@keyframes fadeamp {
+	0% {
+
+	}
+}
+
 .initialpage {
-	animation: 0.8s ease-in 0s headamp;
+	animation: 0.5s ease-in 1 headamp;
 }
 
 .initialpage h1 {
