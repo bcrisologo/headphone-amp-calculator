@@ -34,7 +34,7 @@ class InputForm extends React.Component {
 
 		// Displays an error on the side of the input box
 		// when the entry is non-numerical
-		// *** Can use ? operator when optimizing the IF statements
+		// *** Can use ? operator for optimization
 		if(name === "impedance") {
 			if(value !== "" && !Number(value)) {
 				// Displays error for Impedance
@@ -69,7 +69,7 @@ class InputForm extends React.Component {
 
 		// Checks if entries submitted are not numerical
 		// Returns an alert message if it fails in any test
-		// Can use ? operator later for optimization
+		// *** Can use ? operator for optimization
 		if(impedance !== '' && sensitivity !== '' && 
 			!Number(impedance) && !Number(sensitivity)) {
 			// Both entries are non-numbers
@@ -130,22 +130,6 @@ class InputForm extends React.Component {
 			current_painful: current_painful,
 		}));
 	}
-
-
-	/* // The poweroutput function call is still under testing
-	poweroutput(sensitivity, volumes) {
-		//event.preventDefault();
-
-		//let sensitivity = this.state.sensitivity;
-		//let impedance = this.state.impedance;
-		const power_safe = powerCalculation(sensitivity, volumes.safe_volume).toPrecision(2);
-		console.log(power_safe);
-
-		this.setState({
-			power_safe: power_safe
-		});
-	}
-	*/
 
 	render(){
 		return (

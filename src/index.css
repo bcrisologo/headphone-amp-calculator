@@ -32,7 +32,10 @@ code {
 
 @keyframes fadeamp {
 	0% {
-
+		opacity: 0%;
+	}
+	100% {
+		opacity: 100%;
 	}
 }
 
@@ -94,6 +97,8 @@ code {
 	width: 40%;
 	margin-left: 30%;
 	margin-right: 30%;
+	margin-top: 5%;
+	margin-bottom: 10%;
 }
 
 /* Sensitivity textbox */
@@ -101,6 +106,8 @@ code {
 	width: 40%;
 	margin-left: 30%;
 	margin-right: 30%;
+	margin-top: 5%;
+	margin-bottom: 10%;
 }
 
 /* Placeholder of textboxes */
@@ -137,6 +144,7 @@ input[type=text]:focus {
 	width: 50%;
 	margin-left: 25%;
 	margin-right: 25%;
+	animation: 1s ease-in 0s fadeamp;
 }
 
 /* Makes the border of the table merge better */
