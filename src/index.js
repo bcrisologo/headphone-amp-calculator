@@ -133,7 +133,6 @@ class InputForm extends React.Component {
 				    onChange={this.handleChange}
 	   			    value={this.state.impedance}
 				  />
-				  {this.state.errormessageone}
 			    </div>
 			    <div class="textbox-2">
 			    <p> Sensitivity </p>
@@ -145,7 +144,6 @@ class InputForm extends React.Component {
 				    onChange={this.handleChange}
 				    value={this.state.sensitivity}
 				   />
-   				   {this.state.errormessagetwo}
 			    </div>
 			  </div>
 			  <br /> <br />
