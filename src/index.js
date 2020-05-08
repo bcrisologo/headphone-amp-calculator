@@ -64,7 +64,6 @@ class InputForm extends React.Component {
 			}
 			else if(impedance === '' && sensitivity === '') {
 				// Empty field
-				isSubmitted = false;
 				return;
 			}
 		else {
