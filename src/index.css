@@ -11,7 +11,6 @@
 body {
 	margin: 0;
 	background-color: lightblue;
-	display: grid;
 }
 
 code {
@@ -73,6 +72,7 @@ code {
 .textbox-1 {
     display: inline-block;
     border: 5px solid red;
+    padding: 10px;
 }
 
 .textbox-1 p {
@@ -84,6 +84,7 @@ code {
 .textbox-2 {
 	display: inline-block;
     border: 5px solid green;
+    padding: 10px;
 }
 
 .textbox-2 p {
@@ -108,6 +109,7 @@ code {
 	margin-right: 30%;
 	margin-top: 5%;
 	margin-bottom: 10%;
+	opacity: 110%;
 }
 
 /* Placeholder of textboxes */
@@ -140,24 +142,25 @@ input[type=text]:focus {
 /* This is for the whole Tableresults */
 .tableresults {
 	position: relative;
-	align-content: center;
+	text-content: center;
 	width: 50%;
-	margin-left: 25%;
-	margin-right: 25%;
-	animation: 1s ease-in 0s fadeamp;
+	margin-left: 27%;
+	margin-right: 30%;
+	animation: 0.8s ease-in 0s fadeamp;
+	padding-bottom: 20px;
 }
 
 /* Makes the border of the table merge better */
 .tableouter {
 	position: relative;
 	border-collapse: collapse;
-	font-size: 15px;
+	font-size: 18px;
 }
 
 /* For the table headers */
 .tablouter tr, th {
 	border: solid;
-	padding: 10px;
+	padding: 15px 12px;
 }
 
 /* For the table body */

@@ -11,7 +11,7 @@ class Tableresults extends React.Component {
 				  <tr>
 			  		<th>Category</th>
 			  		<th>Loudness (db SPL)</th>
-			  		<th>Voltage Needed (VRMS)</th>
+			  		<th> Voltage Needed (VRMS)</th>
 			  		<th>Current needed (mA)</th>
 			  		<th>Power Needed (mW)</th>
 				  </tr>
