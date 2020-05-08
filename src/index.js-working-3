@@ -13,11 +13,14 @@ class InputForm extends React.Component {
 		this.state = { 
 			sensitivity: '', 
 			impedance: '',
+			errormessageone: '',
+			errormessagetwo: '',
 			isSubmitted: false
 		};
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		// this.poweroutput = this.poweroutput.bind(this);
 	}
 
 	 handleChange(event) {
@@ -27,9 +30,28 @@ class InputForm extends React.Component {
 		console.log(event.target.value)
 
 		let {value, name} = event.target;
+		let {errone, errtwo} = '';
+
+		// Displays an error on the side of the input box
+		// when the entry is non-numerical
+		// *** Can use ? operator for optimization
+		if(name === "impedance") {
+			if(value !== "" && !Number(value)) {
+				// Displays error for Impedance
+				errone = "  Impedance must be a number";
+			}
+		}
+		if(name === "sensitivity") {
+			if(value !== "" && !Number(value)) {
+				// Displays error for Sensitivity
+				errtwo = "  Sensitivity must be a number";
+			}
+		}	
 
 		this.setState({
 			[name]: value,
+			errormessageone: errone,
+			errormessagetwo: errtwo
 		});
 	}
 	
@@ -44,7 +66,6 @@ class InputForm extends React.Component {
 		// Assigning the local variables to input
 		let impedance = this.state.impedance;
 		let sensitivity = this.state.sensitivity;
-		let isSubmitted = this.state.isSubmitted;
 
 		// Checks if entries submitted are not numerical
 		// Returns an alert message if it fails in any test
@@ -64,12 +85,8 @@ class InputForm extends React.Component {
 			}
 			else if(impedance === '' && sensitivity === '') {
 				// Empty field
-				isSubmitted = false;
 				return;
 			}
-		else {
-			isSubmitted = true;
-		}
 
 		// Power variables
 		let power_safe = powerCalculation(sensitivity, volumes.safe_volume).toPrecision(2);
@@ -91,10 +108,9 @@ class InputForm extends React.Component {
 		let current_fairlyloud = currentCalculation(powerCalculation(sensitivity,volumes.fairlyloud_volume), impedance).toPrecision(4);
 		let current_veryloud = currentCalculation(powerCalculation(sensitivity,volumes.veryloud_volume), impedance).toPrecision(4);
 		let current_painful = currentCalculation(powerCalculation(sensitivity,volumes.painful_volume), impedance).toPrecision(4);
-
 	
 		this.setState(state => ({
-			isSubmitted: isSubmitted,
+			isSubmitted: true,
 			impedance: impedance,
 			sensitivity: sensitivity,
 			power_safe: power_safe,

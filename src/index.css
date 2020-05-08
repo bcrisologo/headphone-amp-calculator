@@ -72,7 +72,7 @@ code {
  
 .textbox-1 {
     display: inline-block;
-    border: 1px solid red;
+    border: 5px solid red;
 }
 
 .textbox-1 p {
@@ -83,7 +83,7 @@ code {
 
 .textbox-2 {
 	display: inline-block;
-    border: 1px solid green;
+    border: 5px solid green;
 }
 
 .textbox-2 p {
