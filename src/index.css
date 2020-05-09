@@ -66,17 +66,17 @@ code {
 	display: block;
 	position: relative;
 	text-align: center;
+    overflow: auto;
 }
  
 .textbox-1 {
     display: inline-block;
     border: 5px solid red;
-    text-align: center;
-    padding: 20px;
+    padding: 15px;
 }
 
 .textbox-1 p {
-	width: auto;
+	text-indent: -5px;
 	font-size: 18px;
 	text-align: center;
 }
@@ -84,11 +84,11 @@ code {
 .textbox-2 {
 	display: inline-block;
     border: 5px solid green;
-    padding: 20px;
+    padding: 15px;
 }
 
 .textbox-2 p {
-	width: auto;
+	text-indent: -5px;
 	font-size: 18px;
 	text-align: center;
 }
@@ -116,7 +116,7 @@ code {
 input {
 	padding: 5px;
 	text-align: center;
-	background-color: lightgrey;
+	background-color: grey;
 }
 
 input[type=text]:focus {
@@ -144,7 +144,7 @@ input[type=text]:focus {
 	position: relative;
 	text-align: center;
 	width: 50%;
-	margin-left: 30%;
+	margin-left: 27%;
 	margin-right: 30%;
 	animation: 0.8s ease-in 0s fadeamp;
 	padding-bottom: 20px;
