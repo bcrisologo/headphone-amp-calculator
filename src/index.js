@@ -117,10 +117,10 @@ class InputForm extends React.Component {
 		return (
 			<div className="initialpage">
 			<form onSubmit={this.handleSubmit}>
-			  <h1>Headphone Amplification Calculator</h1><br />
-			  <p> Welcome to the Amplification Calculator page!</p>
+			  <h1>Headphone Amplifier Calculator</h1><br />
+			  <p> Do you need an amp? Check the results below </p>
 			  <br />
-			  <p> Check the headphone specifications and see the results </p>
+			  <p> Check your headphone specifications and see the results </p>
 			  <div className="dataentry">
 			    <div class="textbox-1">
 			    <p> Impedance </p>
@@ -143,6 +143,12 @@ class InputForm extends React.Component {
 				    onChange={this.handleChange}
 				    value={this.state.sensitivity}
 				   />
+				   <form>
+				     <select id="mySelect">
+				       <option>db / mW</option>
+				       <option>db / Vrms</option>
+				     </select>
+				   </form>
 			    </div>
 			  </div>
 			  <br /> <br />

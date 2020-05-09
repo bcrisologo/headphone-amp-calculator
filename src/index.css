@@ -71,8 +71,9 @@ code {
  
 .textbox-1 {
     display: inline-block;
+    align-content: all;
     border: 5px solid red;
-    padding: 15px;
+    padding: 25px;
 }
 
 .textbox-1 p {
@@ -83,8 +84,9 @@ code {
 
 .textbox-2 {
 	display: inline-block;
+	align-content: all;
     border: 5px solid green;
-    padding: 15px;
+    padding: 25px;
 }
 
 .textbox-2 p {
