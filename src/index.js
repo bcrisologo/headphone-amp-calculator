@@ -5,15 +5,6 @@ import {volumes, powerCalculation,
 import Tableresults from './Tableresults.js';
 import './index.css';
 
-
-const tester = (
-	<div class="testinghover">
-	  <p>
-	  This is a test hover text
-	  </p>
-	</div>
-)
-
 class InputForm extends React.Component {
 
 	constructor(props) {
