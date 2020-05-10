@@ -47,7 +47,6 @@ class InputForm extends React.Component {
 		let sensitivity = this.state.sensitivity;
 		let isSubmitted = this.state.isSubmitted;
 		let powerentry = this.state.powerentry;
-		let testpower = this.state.testpower;
 
 		// Checks if entries submitted are not numerical
 		// Returns an alert message if it fails in any test
@@ -82,7 +81,6 @@ class InputForm extends React.Component {
 		// Sensitivity check and calculation
 		switch(powerentry) {
 			default:
-			  testpower = powerCalculation_mws(sensitivity, volumes.fairlyloud_volume).toPrecision(2);
 			  power_safe = powerCalculation_mws(sensitivity, volumes.safe_volume).toPrecision(2);
 			  power_moderate = powerCalculation_mws(sensitivity, volumes.moderate_volume).toPrecision(3);
 			  power_fairlyloud = powerCalculation_mws(sensitivity, volumes.fairlyloud_volume).toPrecision(4);
@@ -90,7 +88,6 @@ class InputForm extends React.Component {
 			  power_painful = powerCalculation_mws(sensitivity, volumes.painful_volume).toPrecision(5);
 			  break;
 			case "vrms":
-			  testpower = powerCalculation_vrms(sensitivity, volumes.fairlyloud_volume, impedance).toPrecision(2);
 			  power_safe = powerCalculation_vrms(sensitivity, volumes.safe_volume, impedance).toPrecision(2);
 			  power_moderate = powerCalculation_vrms(sensitivity, volumes.moderate_volume, impedance).toPrecision(3);
 			  power_fairlyloud = powerCalculation_vrms(sensitivity, volumes.fairlyloud_volume, impedance).toPrecision(4);
@@ -116,7 +113,6 @@ class InputForm extends React.Component {
 		this.setState(state => ({
 			isSubmitted: isSubmitted,
 			powerentry: powerentry,
-			testpower: testpower,
 			impedance: impedance,
 			sensitivity: sensitivity,
 			power_safe: power_safe,
@@ -184,9 +180,6 @@ class InputForm extends React.Component {
 			      id="submit"
 			      >Calculate
 			    </button>
-			<div>
-			  <p> Powerentry is {this.state.powerentry} and Testpower value is {this.state.testpower}</p>
-			</div>
 			  <br /><br />
 			</form>
 			  <div>
