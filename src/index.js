@@ -94,23 +94,11 @@ class InputForm extends React.Component {
 		let current_veryloud = currentCalculation(power_veryloud, impedance).toPrecision(4);
 		let current_painful = currentCalculation(power_painful, impedance).toPrecision(4);
 
-		/*
-		switch(powerentry) {
-			case "mw":
-			  testpower = powerCalculation_mws(sensitivity, volumes.safe_volume).toPrecision(2);
-			  break;
-			case "vrms":
-			  testpower = powerCalculation_vrms(sensitivity, volumes.safe_volume, impedance).toPrecision(2);
-			  break;
-			default:
-			  testpower = powerCalculation_mws(sensitivity, volumes.safe_volume).toPrecision(2);
-		}
-		*/
 
-		if(powerentry === "vrms") {
-			testpower = powerCalculation_vrms(sensitivity, volumes.safe_volume, impedance).toPrecision(2);
+		if(powerentry.val === "vrms") {
+			testpower = powerCalculation_vrms(sensitivity, volumes.fairlyloud_volume, impedance).toPrecision(2);
 		} else {
-			testpower = powerCalculation_mws(sensitivity, volumes.safe_volume).toPrecision(2);
+			testpower = powerCalculation_vrms(sensitivity, volumes.fairlyloud_volume, impedance).toPrecision(2);
 		}
 
 		this.setState(state => ({
@@ -167,13 +155,16 @@ class InputForm extends React.Component {
 				    onChange={this.handleChange}
 				    value={this.state.sensitivity}
 				   />
+				   <label>
 				   <select 
-				     value={this.state.value}
+				     id="powerentry"
+				     value={this.props.powerentry}
 				     onChange={this.handleChange}
 				   >
 				     <option value="mw">db / mW</option>
 				     <option value="vrms">db / Vrms</option>
 				   </select>
+				   </label>
 			    </div>
 			  </div>
 			  <br /> <br />
@@ -183,7 +174,7 @@ class InputForm extends React.Component {
 			      >Calculate
 			    </button>
 			<div>
-			  <p> Powerentry variable value is {this.state.testpower}</p>
+			  <p> Powerentry is {this.state.powerentry} and Testpower value is {this.state.testpower}</p>
 			</div>
 			  <br /><br />
 			</form>
