@@ -15,14 +15,19 @@ const { safe_volume, moderate_volume,
 		= volumes;
 
 // Base calculation for Power Requirements in milliWatts (mW)
-export function powerCalculation(sensitivity, volume_level) {
-	console.log(sensitivity, volume_level);
+// This is if sensitivity is in "db / mW"
+export function powerCalculation_mws(sensitivity, volume_level) {
 	return 10 ** ((volume_level - sensitivity) / 10)
+}
+
+// Base calculation for Power Requirements in milliWatts (mW)
+// This is if sensitivity is in "db / Vrms"
+export function powerCalculation_vrms(sensitivity, volume_level, impedance) {
+	return 10 ** (((volume_level) - (sensitivity - 10 * Math.log(1000 / impedance))) / 10)
 }
 
 // Base calculation for Voltage Requirements in Volts Root Mean Square (VRMS)
 export function voltageCalculation(power, impedance) {
-	console.log(power, impedance);
 	return Math.sqrt(power / 1000 * impedance)
 }
 
