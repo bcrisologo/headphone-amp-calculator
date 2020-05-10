@@ -12,8 +12,8 @@ class InputForm extends React.Component {
 		this.state = { 
 			sensitivity: '', 
 			impedance: '',
-			powerentry: '',
 			testpower: '',
+			powerentry: 'mw',
 			isSubmitted: false
 		};
 
@@ -30,7 +30,7 @@ class InputForm extends React.Component {
 		let {value, name} = event.target;
 
 		this.setState({
-			[name]: value,
+			[name]: value
 		});
 	}
 	
@@ -73,12 +73,31 @@ class InputForm extends React.Component {
 			isSubmitted = true;
 		}
 
-		// Power variables
-		let power_safe = powerCalculation_mws(sensitivity, volumes.safe_volume).toPrecision(2);
-		let power_moderate = powerCalculation_mws(sensitivity, volumes.moderate_volume).toPrecision(3);
-		let power_fairlyloud = powerCalculation_mws(sensitivity, volumes.fairlyloud_volume).toPrecision(4);
-		let power_veryloud = powerCalculation_mws(sensitivity, volumes.veryloud_volume).toPrecision(5);
-		let power_painful = powerCalculation_mws(sensitivity, volumes.painful_volume).toPrecision(5);
+		let power_safe = '';
+		let power_moderate = '';
+		let power_fairlyloud = '';
+		let power_veryloud = '';
+		let power_painful = '';
+
+		// Sensitivity check and calculation
+		switch(powerentry) {
+			default:
+			  testpower = powerCalculation_mws(sensitivity, volumes.fairlyloud_volume).toPrecision(2);
+			  power_safe = powerCalculation_mws(sensitivity, volumes.safe_volume).toPrecision(2);
+			  power_moderate = powerCalculation_mws(sensitivity, volumes.moderate_volume).toPrecision(3);
+			  power_fairlyloud = powerCalculation_mws(sensitivity, volumes.fairlyloud_volume).toPrecision(4);
+			  power_veryloud = powerCalculation_mws(sensitivity, volumes.veryloud_volume).toPrecision(5);
+			  power_painful = powerCalculation_mws(sensitivity, volumes.painful_volume).toPrecision(5);
+			  break;
+			case "vrms":
+			  testpower = powerCalculation_vrms(sensitivity, volumes.fairlyloud_volume, impedance).toPrecision(2);
+			  power_safe = powerCalculation_vrms(sensitivity, volumes.safe_volume, impedance).toPrecision(2);
+			  power_moderate = powerCalculation_vrms(sensitivity, volumes.moderate_volume, impedance).toPrecision(3);
+			  power_fairlyloud = powerCalculation_vrms(sensitivity, volumes.fairlyloud_volume, impedance).toPrecision(4);
+			  power_veryloud = powerCalculation_vrms(sensitivity, volumes.veryloud_volume, impedance).toPrecision(5);
+			  power_painful = powerCalculation_vrms(sensitivity, volumes.painful_volume, impedance).toPrecision(5);
+		}
+
 
 		// Voltage variables
 		let voltage_safe = voltageCalculation(power_safe, impedance).toPrecision(2);
@@ -93,13 +112,6 @@ class InputForm extends React.Component {
 		let current_fairlyloud = currentCalculation(power_fairlyloud, impedance).toPrecision(4);
 		let current_veryloud = currentCalculation(power_veryloud, impedance).toPrecision(4);
 		let current_painful = currentCalculation(power_painful, impedance).toPrecision(4);
-
-
-		if(powerentry.val === "vrms") {
-			testpower = powerCalculation_vrms(sensitivity, volumes.fairlyloud_volume, impedance).toPrecision(2);
-		} else {
-			testpower = powerCalculation_vrms(sensitivity, volumes.fairlyloud_volume, impedance).toPrecision(2);
-		}
 
 		this.setState(state => ({
 			isSubmitted: isSubmitted,
@@ -155,16 +167,15 @@ class InputForm extends React.Component {
 				    onChange={this.handleChange}
 				    value={this.state.sensitivity}
 				   />
-				   <label>
-				   <select 
-				     id="powerentry"
-				     value={this.props.powerentry}
-				     onChange={this.handleChange}
-				   >
-				     <option value="mw">db / mW</option>
-				     <option value="vrms">db / Vrms</option>
-				   </select>
-				   </label>
+				  <select 
+				    name="powerentry"
+				    id="powerentry"
+				    onChange={this.handleChange}
+				    value={this.state.powerentry}
+				  >
+				    <option value="mw">db / mW</option>
+				    <option value="vrms">db / Vrms</option>
+				  </select>
 			    </div>
 			  </div>
 			  <br /> <br />
