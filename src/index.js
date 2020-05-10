@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {volumes, powerCalculation, 
+import {volumes, powerCalculation_mws, powerCalculation_vrms,
 	voltageCalculation, currentCalculation} from './Calculations.js';
 import Tableresults from './Tableresults.js';
 import './index.css';
@@ -12,6 +12,8 @@ class InputForm extends React.Component {
 		this.state = { 
 			sensitivity: '', 
 			impedance: '',
+			powerentry: '',
+			testpower: '',
 			isSubmitted: false
 		};
 
@@ -44,6 +46,8 @@ class InputForm extends React.Component {
 		let impedance = this.state.impedance;
 		let sensitivity = this.state.sensitivity;
 		let isSubmitted = this.state.isSubmitted;
+		let powerentry = this.state.powerentry;
+		let testpower = this.state.testpower;
 
 		// Checks if entries submitted are not numerical
 		// Returns an alert message if it fails in any test
@@ -70,29 +74,49 @@ class InputForm extends React.Component {
 		}
 
 		// Power variables
-		let power_safe = powerCalculation(sensitivity, volumes.safe_volume).toPrecision(2);
-		let power_moderate = powerCalculation(sensitivity, volumes.moderate_volume).toPrecision(3);
-		let power_fairlyloud = powerCalculation(sensitivity, volumes.fairlyloud_volume).toPrecision(4);
-		let power_veryloud = powerCalculation(sensitivity, volumes.veryloud_volume).toPrecision(5);
-		let power_painful = powerCalculation(sensitivity, volumes.painful_volume).toPrecision(5);
+		let power_safe = powerCalculation_mws(sensitivity, volumes.safe_volume).toPrecision(2);
+		let power_moderate = powerCalculation_mws(sensitivity, volumes.moderate_volume).toPrecision(3);
+		let power_fairlyloud = powerCalculation_mws(sensitivity, volumes.fairlyloud_volume).toPrecision(4);
+		let power_veryloud = powerCalculation_mws(sensitivity, volumes.veryloud_volume).toPrecision(5);
+		let power_painful = powerCalculation_mws(sensitivity, volumes.painful_volume).toPrecision(5);
 
 		// Voltage variables
-		let voltage_safe = voltageCalculation(powerCalculation(sensitivity,volumes.safe_volume), impedance).toPrecision(2);
-		let voltage_moderate = voltageCalculation(powerCalculation(sensitivity,volumes.moderate_volume), impedance).toPrecision(3);
-		let voltage_fairlyloud = voltageCalculation(powerCalculation(sensitivity,volumes.fairlyloud_volume), impedance).toPrecision(4);
-		let voltage_veryloud = voltageCalculation(powerCalculation(sensitivity,volumes.veryloud_volume), impedance).toPrecision(4);
-		let voltage_painful = voltageCalculation(powerCalculation(sensitivity,volumes.painful_volume), impedance).toPrecision(4);
+		let voltage_safe = voltageCalculation(power_safe, impedance).toPrecision(2);
+		let voltage_moderate = voltageCalculation(power_moderate, impedance).toPrecision(3);
+		let voltage_fairlyloud = voltageCalculation(power_fairlyloud, impedance).toPrecision(4);
+		let voltage_veryloud = voltageCalculation(power_veryloud, impedance).toPrecision(4);
+		let voltage_painful = voltageCalculation(power_painful, impedance).toPrecision(4);
 
 		// Current variables
-		let current_safe = currentCalculation(powerCalculation(sensitivity,volumes.safe_volume), impedance).toPrecision(2);
-		let current_moderate = currentCalculation(powerCalculation(sensitivity,volumes.moderate_volume), impedance).toPrecision(4);
-		let current_fairlyloud = currentCalculation(powerCalculation(sensitivity,volumes.fairlyloud_volume), impedance).toPrecision(4);
-		let current_veryloud = currentCalculation(powerCalculation(sensitivity,volumes.veryloud_volume), impedance).toPrecision(4);
-		let current_painful = currentCalculation(powerCalculation(sensitivity,volumes.painful_volume), impedance).toPrecision(4);
+		let current_safe = currentCalculation(power_safe, impedance).toPrecision(2);
+		let current_moderate = currentCalculation(power_moderate, impedance).toPrecision(4);
+		let current_fairlyloud = currentCalculation(power_fairlyloud, impedance).toPrecision(4);
+		let current_veryloud = currentCalculation(power_veryloud, impedance).toPrecision(4);
+		let current_painful = currentCalculation(power_painful, impedance).toPrecision(4);
 
-	
+		/*
+		switch(powerentry) {
+			case "mw":
+			  testpower = powerCalculation_mws(sensitivity, volumes.safe_volume).toPrecision(2);
+			  break;
+			case "vrms":
+			  testpower = powerCalculation_vrms(sensitivity, volumes.safe_volume, impedance).toPrecision(2);
+			  break;
+			default:
+			  testpower = powerCalculation_mws(sensitivity, volumes.safe_volume).toPrecision(2);
+		}
+		*/
+
+		if(powerentry === "vrms") {
+			testpower = powerCalculation_vrms(sensitivity, volumes.safe_volume, impedance).toPrecision(2);
+		} else {
+			testpower = powerCalculation_mws(sensitivity, volumes.safe_volume).toPrecision(2);
+		}
+
 		this.setState(state => ({
 			isSubmitted: isSubmitted,
+			powerentry: powerentry,
+			testpower: testpower,
 			impedance: impedance,
 			sensitivity: sensitivity,
 			power_safe: power_safe,
@@ -122,7 +146,7 @@ class InputForm extends React.Component {
 			  <br />
 			  <p> Check your headphone specifications and see the results </p>
 			  <div className="dataentry">
-			    <div class="textbox-1">
+			    <div className="textbox-1">
 			    <p> Impedance </p>
 				  <input
 				    name="impedance"
@@ -133,7 +157,7 @@ class InputForm extends React.Component {
 	   			    value={this.state.impedance}
 				  />
 			    </div>
-			    <div class="textbox-2">
+			    <div className="textbox-2">
 			    <p> Sensitivity </p>
     			  <input
 				    name="sensitivity"
@@ -143,12 +167,13 @@ class InputForm extends React.Component {
 				    onChange={this.handleChange}
 				    value={this.state.sensitivity}
 				   />
-				   <form>
-				     <select id="mySelect">
-				       <option>db / mW</option>
-				       <option>db / Vrms</option>
-				     </select>
-				   </form>
+				   <select 
+				     value={this.state.value}
+				     onChange={this.handleChange}
+				   >
+				     <option value="mw">db / mW</option>
+				     <option value="vrms">db / Vrms</option>
+				   </select>
 			    </div>
 			  </div>
 			  <br /> <br />
@@ -157,6 +182,9 @@ class InputForm extends React.Component {
 			      id="submit"
 			      >Calculate
 			    </button>
+			<div>
+			  <p> Powerentry variable value is {this.state.testpower}</p>
+			</div>
 			  <br /><br />
 			</form>
 			  <div>
