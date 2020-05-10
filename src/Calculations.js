@@ -1,6 +1,5 @@
 // Calculation Functions and Constants used
 
-
 // Target volume constants
 const volumes = {
 	safe_volume: 85,
@@ -34,11 +33,6 @@ function currentCalculation(power, impedance) {
 	return Math.sqrt(power / (1000 * impedance)) * 1000
 }
 
-/*var test_power_mw = {
-	pp_safe: powerCalculation_mws(InputForm.state.sensitivity, volumes.safe_volume),
-	pp_moderate: powerCalculation_mws(sensitivity. volumes.moderate_volume),
-};
-*/
 export {
 	volumes,
 	powerCalculation_mws,
