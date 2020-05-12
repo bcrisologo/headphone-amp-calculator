@@ -135,14 +135,14 @@ class InputForm extends React.Component {
 
 	render(){
 		return (
-			<div class="container-fluid" className="initialpage">
+			<div className="initialpage">
 			<form onSubmit={this.handleSubmit}>
 			  <h1>Headphone Amplifier Calculator</h1><br />
 			  <p> Do you need an amp? Check the results below </p>
 			  <br />
 			  <p> Check your headphone specifications and see the results </p>
-			  <div className="dataentry">
-			    <div className="textbox-1">
+			  <div class="container-fluid" className="dataentry">
+			    <div class="col-sm" className="textbox-1">
 			    <p> Impedance </p>
 				  <input
 				    name="impedance"
@@ -153,7 +153,7 @@ class InputForm extends React.Component {
 	   			    value={this.state.impedance}
 				  />
 			    </div>
-			    <div className="textbox-2">
+			    <div class="col-sm" className="textbox-2">
 			    <p> Sensitivity </p>
     			  <input
 				    name="sensitivity"
