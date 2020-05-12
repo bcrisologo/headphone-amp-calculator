@@ -135,7 +135,7 @@ class InputForm extends React.Component {
 
 	render(){
 		return (
-			<div className="initialpage">
+			<div class="container-fluid" className="initialpage">
 			<form onSubmit={this.handleSubmit}>
 			  <h1>Headphone Amplifier Calculator</h1><br />
 			  <p> Do you need an amp? Check the results below </p>

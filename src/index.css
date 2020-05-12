@@ -44,21 +44,25 @@ code {
 .initialpage h1 {
 	position: relative;
 	text-align: center;
+	font-family: 'adobe';
+	font-size: 40px;
+	/*
 	width: 60%;
 	margin-left: 20%;
 	margin-right: 20%;
-	font-family: 'adobe';
-	font-size: 40px;
+	*/
 }
 
 .initialpage p {
 	position: relative;
+	text-align: center;
 	font-family: 'arial';
 	font-size: 18px;
-	text-align: center;
+	/*
 	width: 40%;
 	margin-left: 30%;
 	margin-right: 30%;
+	*/
 }
 
 .dataentry {
@@ -71,7 +75,6 @@ code {
  
 .textbox-1 {
     display: inline-block;
-    align-content: all;
     border: 5px solid red;
     padding: 25px;
 }
@@ -84,7 +87,6 @@ code {
 
 .textbox-2 {
 	display: inline-block;
-	align-content: all;
     border: 5px solid green;
     padding: 25px;
 }
@@ -97,20 +99,25 @@ code {
 
 /* Impedance textbox */
 #first {
+	/*
 	width: 40%;
 	margin-left: 30%;
 	margin-right: 30%;
 	margin-top: 5%;
 	margin-bottom: 10%;
+	*/
+	opacity: 110%;
 }
 
 /* Sensitivity textbox */
 #second {
+	/*
 	width: 40%;
 	margin-left: 30%;
 	margin-right: 30%;
 	margin-top: 5%;
 	margin-bottom: 10%;
+	*/
 	opacity: 110%;
 }
 
