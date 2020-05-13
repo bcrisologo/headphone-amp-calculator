@@ -164,7 +164,6 @@ class InputForm extends React.Component {
 		 	<ParticlesBg color="#ffffff" num={300} type="cobweb" bg={true} />
 			<form onSubmit={this.handleSubmit}>
 			  <h1>Headphone Amplifier Calculator</h1><br />
-			  <p> Do you need an amp? Check the results below </p>
 			  <br />
 			  <p> Check your headphone specifications and see the results </p>
 			  <div class="centered" className="dataentry">

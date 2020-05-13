@@ -9,8 +9,6 @@ const volumes = {
 	painful_volume: 120
 };
 
-//let sensitivity = this.props.sensitivity;
-
 // Base calculation for Power Requirements in milliWatts (mW)
 // This is if sensitivity is in "db / mW"
 function powerCalculation_mws(sensitivity, volume_level) {
