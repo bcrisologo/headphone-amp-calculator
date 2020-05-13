@@ -158,7 +158,7 @@ input#second[type=text]:focus {
 	border-color: orange;
 	background-color: #ff9933;
 	padding: 10px 20px;
-	animation: 0.8s ease-in 1 fadeamp;
+	/*animation: 0.8s ease-in 1 fadeamp;*/
 }
 
 #submit:hover {

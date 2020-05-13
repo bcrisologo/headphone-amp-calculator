@@ -49,6 +49,12 @@ class InputForm extends React.Component {
 		let isSubmitted = this.state.isSubmitted;
 		let powerentry = this.state.powerentry;
 
+		let power_safe = '';
+		let power_moderate = '';
+		let power_fairlyloud = '';
+		let power_veryloud = '';
+		let power_painful = '';
+
 		// Checks if entries submitted are not numerical
 		// Returns an alert message if it fails in any test
 		// *** Can use ? operator for optimization
@@ -57,6 +63,15 @@ class InputForm extends React.Component {
 			// Both entries are non-numbers
 			alert("Impedance and Sensitivity entries are not numbers");
 		}
+			else if (impedance === '') {
+				// Impedance is empty
+				alert("Impedance is empty");
+
+			}
+			else if (sensitivity === '') {
+				// Sensitivity is empty
+				alert("Sensitivity is empty");
+			}
 			else if(impedance !== '' && !Number(impedance)) {
 				// Impedance is not a number
 				alert("Impedance entry is not a number");
@@ -72,12 +87,6 @@ class InputForm extends React.Component {
 		else {
 			isSubmitted = true;
 		}
-
-		let power_safe = '';
-		let power_moderate = '';
-		let power_fairlyloud = '';
-		let power_veryloud = '';
-		let power_painful = '';
 
 		// Sensitivity check and calculation
 		switch(powerentry) {
@@ -95,6 +104,7 @@ class InputForm extends React.Component {
 			  power_veryloud = powerCalculation_vrms(sensitivity, volumes.veryloud_volume, impedance).toPrecision(5);
 			  power_painful = powerCalculation_vrms(sensitivity, volumes.painful_volume, impedance).toPrecision(5);
 		}
+
 
 
 		// Voltage variables
@@ -146,7 +156,7 @@ class InputForm extends React.Component {
 			  <br />
 			  <p> Check your headphone specifications and see the results </p>
 			  <div class="centered" className="dataentry">
-			    <div class="col-6" className="textbox-1">
+			    <div className="textbox-1">
 			    <p> Impedance </p>
 				  <input
 				    name="impedance"
@@ -159,7 +169,7 @@ class InputForm extends React.Component {
 			    </div>
 			    <div className="midgap">
 			    </div>
-			    <div class="col-6" className="textbox-2">
+			    <div className="textbox-2">
 			    <p> Sensitivity </p>
     			  <input
 				    name="sensitivity"
@@ -181,9 +191,10 @@ class InputForm extends React.Component {
 			    </div>
 			  </div>
 			  <br /> <br />
-			    <button 
+			    <button
 			      type="submit"
 			      id="submit"
+			      onClick={this.handleSubmit}
 			      >Calculate
 			    </button>
 			  <br /><br />
