@@ -28,14 +28,19 @@ body {
 	color: white;
 }
 
-.particles {
-	opacity: 20%;
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', 
     monospace;
 }
+
+/* This is for controlling the particles and background */
+canvas{
+  display:block;
+  vertical-align:bottom;
+  opacity: 20%;
+}
+
+/* Animations for classes */
 
 @keyframes headamp {
 	0% {
@@ -147,6 +152,10 @@ input#second[type=text]:focus {
 	background-color: darkgrey;
 }
 
+.submit {
+	display: block;
+}
+
 #submit {
 	display: block;
 	text-align: center;
@@ -158,7 +167,7 @@ input#second[type=text]:focus {
 	border-color: orange;
 	background-color: #ff9933;
 	padding: 10px 20px;
-	/*animation: 0.8s ease-in 1 fadeamp;*/
+	animation: 0.8s ease-in 1 fadeamp;
 }
 
 #submit:hover {
@@ -209,3 +218,4 @@ input#second[type=text]:focus {
 	text-overflow: auto;
 	text-align: center;
 }
+

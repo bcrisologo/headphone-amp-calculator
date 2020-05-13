@@ -161,8 +161,7 @@ class InputForm extends React.Component {
 	render(){
 		return (
 			<div className="initialpage">
-			<div className="particles">
-			</div>
+		 	<ParticlesBg color="#ffffff" num={300} type="cobweb" bg={true} />
 			<form onSubmit={this.handleSubmit}>
 			  <h1>Headphone Amplifier Calculator</h1><br />
 			  <p> Do you need an amp? Check the results below </p>
@@ -212,7 +211,7 @@ class InputForm extends React.Component {
 			      >Calculate
 			    </button>
 			  </div>
-			  <br /><br />
+			<br /><br />
 			</form>
 			  <div>
 			  {this.state.isSubmitted &&
