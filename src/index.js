@@ -138,7 +138,7 @@ class InputForm extends React.Component {
 		return (
 			<div className="initialpage">
 			<div className="particles">
-			  <ParticlesBg color="#ffffff" type="cobweb" bg={true}/>
+			  <ParticlesBg color="#ffffff" num={300} type="cobweb" bg={true}/>
 			</div>
 			<form onSubmit={this.handleSubmit}>
 			  <h1>Headphone Amplifier Calculator</h1><br />
