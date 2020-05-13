@@ -55,6 +55,10 @@ class InputForm extends React.Component {
 		let power_veryloud = '';
 		let power_painful = '';
 
+		// *** USED FOR REUSING CALCULATE BUTTON AGAIN
+		// Checker if all entries are valid
+		let toCalculate = false;
+
 		// Checks if entries submitted are not numerical
 		// Returns an alert message if it fails in any test
 		// *** Can use ? operator for optimization
@@ -62,29 +66,40 @@ class InputForm extends React.Component {
 			!Number(impedance) && !Number(sensitivity)) {
 			// Both entries are non-numbers
 			alert("Impedance and Sensitivity entries are not numbers");
+			toCalculate = false;
 		}
 			else if (impedance === '') {
 				// Impedance is empty
 				alert("Impedance is empty");
-
+				toCalculate = false;
 			}
 			else if (sensitivity === '') {
 				// Sensitivity is empty
 				alert("Sensitivity is empty");
+				toCalculate = false;
 			}
 			else if(impedance !== '' && !Number(impedance)) {
 				// Impedance is not a number
 				alert("Impedance entry is not a number");
+				toCalculate = false;
 			}
 			else if(sensitivity !== '' && !Number(sensitivity)) {
 				// Sensitivity is not a number
 				alert("Sensitivity entry is not a number");
+				toCalculate = false;
 			}
 			else if(impedance === '' && sensitivity === '') {
 				// Empty field
 				return;
 			}
 		else {
+			toCalculate = true;
+		}
+
+		// *** Continues calculation for Recalculating on same page
+		if (toCalculate === false) {
+			return;
+		} else {
 			isSubmitted = true;
 		}
 
@@ -104,8 +119,6 @@ class InputForm extends React.Component {
 			  power_veryloud = powerCalculation_vrms(sensitivity, volumes.veryloud_volume, impedance).toPrecision(5);
 			  power_painful = powerCalculation_vrms(sensitivity, volumes.painful_volume, impedance).toPrecision(5);
 		}
-
-
 
 		// Voltage variables
 		let voltage_safe = voltageCalculation(power_safe, impedance).toPrecision(2);
@@ -143,12 +156,12 @@ class InputForm extends React.Component {
 			current_painful: current_painful,
 		}));
 	}
+// 			  <ParticlesBg color="#ffffff" num={300} type="cobweb" bg={true}/>
 
 	render(){
 		return (
 			<div className="initialpage">
 			<div className="particles">
-			  <ParticlesBg color="#ffffff" num={300} type="cobweb" bg={true}/>
 			</div>
 			<form onSubmit={this.handleSubmit}>
 			  <h1>Headphone Amplifier Calculator</h1><br />
@@ -191,12 +204,14 @@ class InputForm extends React.Component {
 			    </div>
 			  </div>
 			  <br /> <br />
+			  <div className="submit">
 			    <button
 			      type="submit"
 			      id="submit"
 			      onClick={this.handleSubmit}
 			      >Calculate
 			    </button>
+			  </div>
 			  <br /><br />
 			</form>
 			  <div>
