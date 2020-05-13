@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {volumes, powerCalculation_mws, powerCalculation_vrms,
 	voltageCalculation, currentCalculation} from './Calculations.js';
 import Tableresults from './Tableresults.js';
+import ParticlesBg from 'particles-bg';
 import './index.css';
 
 class InputForm extends React.Component {
@@ -136,6 +137,9 @@ class InputForm extends React.Component {
 	render(){
 		return (
 			<div className="initialpage">
+			<div className="particles">
+			  <ParticlesBg color="#ffffff" type="cobweb" bg={true}/>
+			</div>
 			<form onSubmit={this.handleSubmit}>
 			  <h1>Headphone Amplifier Calculator</h1><br />
 			  <p> Do you need an amp? Check the results below </p>

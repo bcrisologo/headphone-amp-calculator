@@ -28,6 +28,9 @@ body {
 	color: white;
 }
 
+.particles {
+	opacity: 40%;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', 
