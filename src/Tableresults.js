@@ -4,7 +4,7 @@ import React from "react";
 class Tableresults extends React.Component {
 	render() {
 		return(
-			<div class="container-fluid"className="tableresults">
+			<div className="tableresults">
 			<h3>Power Requirements per Loudness in dB SPL</h3>
 			  <table className="tableouter">
 			    <thead>

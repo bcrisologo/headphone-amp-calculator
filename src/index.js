@@ -141,8 +141,8 @@ class InputForm extends React.Component {
 			  <p> Do you need an amp? Check the results below </p>
 			  <br />
 			  <p> Check your headphone specifications and see the results </p>
-			  <div class="container-fluid" className="dataentry">
-			    <div class="col-sm" className="textbox-1">
+			  <div class="centered" className="dataentry">
+			    <div class="col-6" className="textbox-1">
 			    <p> Impedance </p>
 				  <input
 				    name="impedance"
@@ -153,7 +153,9 @@ class InputForm extends React.Component {
 	   			    value={this.state.impedance}
 				  />
 			    </div>
-			    <div class="col-sm" className="textbox-2">
+			    <div className="trialgap">
+			    </div>
+			    <div class="col-6" className="textbox-2">
 			    <p> Sensitivity </p>
     			  <input
 				    name="sensitivity"
