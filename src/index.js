@@ -68,12 +68,12 @@ class InputForm extends React.Component {
 			alert("Impedance and Sensitivity entries are not numbers");
 			toCalculate = false;
 		}
-			else if (impedance === '') {
+			else if (impedance === '' && sensitivity !== '') {
 				// Impedance is empty
 				alert("Impedance is empty");
 				toCalculate = false;
 			}
-			else if (sensitivity === '') {
+			else if (sensitivity === '' && impedance !== '') {
 				// Sensitivity is empty
 				alert("Sensitivity is empty");
 				toCalculate = false;
