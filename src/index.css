@@ -24,7 +24,10 @@
 
 body {
 	margin: 0;
+	background: #141d26;
+	color: white;
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', 
@@ -58,13 +61,8 @@ code {
 .initialpage h1 {
 	position: relative;
 	text-align: center;
-	font-family: 'adobe';
+	font-family: 'arial';
 	font-size: 40px;
-	/*
-	width: 60%;
-	margin-left: 20%;
-	margin-right: 20%;
-	*/
 }
 
 .initialpage p {
@@ -92,14 +90,14 @@ code {
     padding-top: 25px;
 }
 
-.trialgap {
+.midgap {
 	display: inline-block;
 	margin-left: 20px;
 	margin-right: 20px;
 }
 
 .textbox-1 p {
-	font-size: 18px;
+	font-size: 20px;
 	text-align: center;
 	padding: 25px;
 }
@@ -113,7 +111,7 @@ code {
 }
 
 .textbox-2 p {
-	font-size: 18px;
+	font-size: 20px;
 	text-align: center;
 	padding: 25px;
 }
@@ -134,11 +132,16 @@ code {
 input {
 	padding: 5px;
 	text-align: center;
-	background-color: grey;
+	background-color: lightgrey;
 }
 
-input[type=text]:focus {
-	border-color: lightblue;
+input#first[type=text]:focus {
+	border-color: red;
+	background-color: darkgrey;
+}
+
+input#second[type=text]:focus {
+	border-color: green;
 	background-color: darkgrey;
 }
 
@@ -147,14 +150,16 @@ input[type=text]:focus {
 	text-align: center;
 	margin-left: 35%;
 	margin-right: 35%;
-	margin: 0 auto;
-	font-size: 16px;
+	margin: auto;
+	font-size: 20px;
 	border-radius: 10px;
+	border-color: orange;
+	background-color: #ff9933;
 	padding: 10px 20px;
 }
 
 #submit:hover {
-	background-color: lightgrey;
+	background-color: #ff8000;
 }
 
 #powerentry {
@@ -171,18 +176,20 @@ input[type=text]:focus {
 /* This is for the whole Tableresults */
 .tableresults {
 	position: relative;
+	display: block;
 	text-align: center;
-	width: 50%;
-	margin-left: 27%;
-	margin-right: 30%;
 	animation: 0.8s ease-in 0s fadeamp;
 	padding-bottom: 20px;
+	width: 50%;
+	margin-left: 25%;
+	margin-right: 25%;
 }
 
 /* Makes the border of the table merge better */
 .tableouter {
 	position: relative;
 	border-collapse: collapse;
+	text-align: center;
 	font-size: 18px;
 }
 
@@ -198,9 +205,4 @@ input[type=text]:focus {
 	padding: 10px;
 	text-overflow: auto;
 	text-align: center;
-}
-
-.centered {
-	display: inline-block;
-	align-content: middle;
 }

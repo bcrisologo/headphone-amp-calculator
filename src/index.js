@@ -153,7 +153,7 @@ class InputForm extends React.Component {
 	   			    value={this.state.impedance}
 				  />
 			    </div>
-			    <div className="trialgap">
+			    <div className="midgap">
 			    </div>
 			    <div class="col-6" className="textbox-2">
 			    <p> Sensitivity </p>
