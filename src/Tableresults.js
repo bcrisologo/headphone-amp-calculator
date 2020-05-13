@@ -54,6 +54,10 @@ class Tableresults extends React.Component {
 			    </tr>
 			    </tbody>
 			  </table>
+			  <br />
+			  <p id="sources"><span>Calculations Source is from <a href="http://www.apexhifi.com/specs.html">Apex Hifi
+			    </a></span>
+			  </p>
 			</div>
 		);
 	}

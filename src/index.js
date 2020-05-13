@@ -156,7 +156,6 @@ class InputForm extends React.Component {
 			current_painful: current_painful,
 		}));
 	}
-// 			  <ParticlesBg color="#ffffff" num={300} type="cobweb" bg={true}/>
 
 	render(){
 		return (
@@ -210,7 +209,7 @@ class InputForm extends React.Component {
 			      >Calculate
 			    </button>
 			  </div>
-			<br /><br />
+			<br />
 			</form>
 			  <div>
 			  {this.state.isSubmitted &&
@@ -237,8 +236,13 @@ class InputForm extends React.Component {
 		);
 	}
 }
-
-
+/*
+			  <div className="sources">
+			  	<p id="sources"><span>Calculations Source is from <a href="http://www.apexhifi.com/specs.html">Apex Hifi
+			  	  </a></span>
+			  	</p>
+			  </div>
+*/
 ReactDOM.render(
 	<InputForm />,
 	document.getElementById('root')

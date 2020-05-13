@@ -74,7 +74,7 @@ canvas{
 	position: relative;
 	text-align: center;
 	font-family: 'arial';
-	font-size: 18px;
+	font-size: 20px;
 	animation: 0.8s ease-in 1 headamp;
 }
 
@@ -86,9 +86,9 @@ canvas{
 .textbox-1 {
     display: inline-block;
     border: 2px solid red;
-    height: 205px;
+    height: 195px;
     width: 444px;
-    padding-top: 25px;
+    padding-top: 15px;
     border-radius: 5px;
     animation: 0.8s ease-in 1 fadeamp;
 }
@@ -109,9 +109,9 @@ canvas{
 .textbox-2 {
 	display: inline-block;
     border: 2px solid green;
-    height: 205px;
+    height: 195px;
     width: 444px;
-    padding-top: 25px;
+    padding-top: 15px;
     border-radius: 5px;
     animation: 0.8s ease-in 1 fadeamp;
 }
@@ -137,7 +137,8 @@ canvas{
 
 /* Placeholder of textboxes */
 input {
-	padding: 5px;
+	padding: 5px 1px 5px;
+	font-size: 15px;
 	text-align: center;
 	background-color: lightgrey;
 }
@@ -185,13 +186,22 @@ input#second[type=text]:focus {
 	background-color: lightgrey;
 }
 
+#sources {
+	position: relative;
+	font-size: 12px;
+	bottom: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 /* This is for the whole Tableresults */
 .tableresults {
 	position: relative;
 	display: block;
 	text-align: center;
+	font-family: 'arial';
 	animation: 0.8s ease-in 0s fadeamp;
-	padding-bottom: 20px;
+	padding-bottom: 30px;
 	width: 50%;
 	margin-left: 25%;
 	margin-right: 25%;
