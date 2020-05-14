@@ -236,13 +236,7 @@ class InputForm extends React.Component {
 		);
 	}
 }
-/*
-			  <div className="sources">
-			  	<p id="sources"><span>Calculations Source is from <a href="http://www.apexhifi.com/specs.html">Apex Hifi
-			  	  </a></span>
-			  	</p>
-			  </div>
-*/
+
 ReactDOM.render(
 	<InputForm />,
 	document.getElementById('root')
