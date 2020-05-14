@@ -156,11 +156,16 @@ class InputForm extends React.Component {
 			current_painful: current_painful,
 		}));
 	}
+// 			  <ParticlesBg color="#ffffff" num={300} type="cobweb" bg={true}/>
 
 	render(){
 		return (
 			<div className="initialpage">
+<<<<<<< HEAD
 		 	<ParticlesBg color="#ffffff" type="cobweb" bg={true} />
+=======
+		 	<ParticlesBg color="#ffffff" num={300} type="cobweb" bg={true} />
+>>>>>>> 7b2d2505108592293ddd575805beddc76517f68d
 			<form onSubmit={this.handleSubmit}>
 			  <h1>Headphone Amplifier Calculator</h1><br />
 			  <br />
@@ -209,7 +214,11 @@ class InputForm extends React.Component {
 			      >Calculate
 			    </button>
 			  </div>
+<<<<<<< HEAD
 			<br />
+=======
+			<br /><br />
+>>>>>>> 7b2d2505108592293ddd575805beddc76517f68d
 			</form>
 			  <div>
 			  {this.state.isSubmitted &&
