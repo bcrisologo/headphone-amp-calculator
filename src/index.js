@@ -165,7 +165,7 @@ class InputForm extends React.Component {
 			  <h1>Headphone Amplifier Calculator</h1><br />
 			  <br />
 			  <p> Check your headphone specifications and see the results </p>
-			  <div class="centered" className="dataentry">
+			  <div className="dataentry">
 			    <div className="textbox-1">
 			    <p> Impedance </p>
 				  <input
