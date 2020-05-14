@@ -37,3 +37,6 @@ You can change the particles effect by simply editing the index.js file and chan
 <ParticlesBg color="#ffffff" type="cobweb" bg={true} />
 ```
  You may check his [Github page here](https://github.com/lindelof/particles-bg) for more information on how to use it for your own page.
+ 
+ ## Live Demo
+ You can visit the live demo on [this amplify app page](https://master.d1hwjxk45tavzi.amplifyapp.com/).
