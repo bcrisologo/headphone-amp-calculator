@@ -74,11 +74,7 @@ canvas{
 	position: relative;
 	text-align: center;
 	font-family: 'arial';
-<<<<<<< HEAD
 	font-size: 20px;
-=======
-	font-size: 18px;
->>>>>>> 7b2d2505108592293ddd575805beddc76517f68d
 	animation: 0.8s ease-in 1 headamp;
 }
 
@@ -90,15 +86,9 @@ canvas{
 .textbox-1 {
     display: inline-block;
     border: 2px solid red;
-<<<<<<< HEAD
     height: 195px;
     width: 444px;
     padding-top: 15px;
-=======
-    height: 205px;
-    width: 444px;
-    padding-top: 25px;
->>>>>>> 7b2d2505108592293ddd575805beddc76517f68d
     border-radius: 5px;
     animation: 0.8s ease-in 1 fadeamp;
 }
@@ -119,15 +109,9 @@ canvas{
 .textbox-2 {
 	display: inline-block;
     border: 2px solid green;
-<<<<<<< HEAD
     height: 195px;
     width: 444px;
     padding-top: 15px;
-=======
-    height: 205px;
-    width: 444px;
-    padding-top: 25px;
->>>>>>> 7b2d2505108592293ddd575805beddc76517f68d
     border-radius: 5px;
     animation: 0.8s ease-in 1 fadeamp;
 }
@@ -215,14 +199,9 @@ input#second[type=text]:focus {
 	position: relative;
 	display: block;
 	text-align: center;
-<<<<<<< HEAD
 	font-family: 'arial';
 	animation: 0.8s ease-in 0s fadeamp;
 	padding-bottom: 30px;
-=======
-	animation: 0.8s ease-in 0s fadeamp;
-	padding-bottom: 20px;
->>>>>>> 7b2d2505108592293ddd575805beddc76517f68d
 	width: 50%;
 	margin-left: 25%;
 	margin-right: 25%;
@@ -248,9 +227,4 @@ input#second[type=text]:focus {
 	padding: 10px;
 	text-overflow: auto;
 	text-align: center;
-<<<<<<< HEAD
 }
-=======
-}
-
->>>>>>> 7b2d2505108592293ddd575805beddc76517f68d
