@@ -1,4 +1,4 @@
-# Headphone Power Requirements Calculator Site 
+# Headphone Power Requirements Calculator 
 
 This is a react-based website with the main purpose of calculating power requirements for headphones at different loudness levels.
 
@@ -27,7 +27,7 @@ npm install
 ```
 To run the site, simply use:
 ```
-npm run
+npm start
 ```
 
 Particle background has been used from particles-bg by user lindelof. 
