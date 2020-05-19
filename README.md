@@ -22,6 +22,9 @@ Calculations have been derived from [Apex Hifi](http://www.apexhifi.com/specs.ht
 
 
 ## Setup
+
+### Package Dependencies
+Run the command below to install the necessary packages for the build.
 ```
 npm install
 ```
