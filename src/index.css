@@ -88,7 +88,7 @@ canvas{
     width: 444px;
     padding-top: 15px;
     border-radius: 5px;
-    animation: 0.45s ease-in fadeamp;
+    animation: 0.5s ease-in fadeamp;
 }
 
 .textbox-2 p {
